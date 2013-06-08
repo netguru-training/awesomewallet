@@ -8,6 +8,7 @@ class User
   validates_presence_of :name
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
+  has_many :transactions
 
   def self.create_with_omniauth(auth)
     user = User.where(email: auth['info']['email']).first
