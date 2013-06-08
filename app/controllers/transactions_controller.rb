@@ -1,6 +1,8 @@
 class TransactionsController < ApplicationController
-	expose(:transactions) { current_user.transactions }
-	expose(:transaction)
+  authenticate_user!
+
+  expose(:transactions) { current_user.transactions }
+  expose(:transaction)
 
   def create
     render :edit and return unless transaction.save
