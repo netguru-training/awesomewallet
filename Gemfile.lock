@@ -48,6 +48,7 @@ GEM
     coffee-script-source (1.6.2)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
+    decent_exposure (2.1.0)
     diff-lcs (1.2.4)
     email_spec (1.4.0)
       launchy (~> 2.1)
@@ -198,6 +199,7 @@ DEPENDENCIES
   bootstrap-sass (>= 2.3.0.0)
   coffee-rails (~> 3.2.1)
   database_cleaner (>= 1.0.0.RC1)
+  decent_exposure
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.2.0)
   figaro (>= 0.6.3)
