@@ -1,0 +1,8 @@
+%h1 Transactions
+
+%table.table
+	- transactions.each do |transaction|
+		%tr
+			%td= transaction.kind
+			%td= transaction.name	
+			%td= transaction.created_at	
