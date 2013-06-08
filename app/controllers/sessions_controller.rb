@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
         redirect_to root_url, notice: "Signed in!"
       else
         # No user associated with the identity so we need to create a new one
-        current_user = User.create_with_omniauth(auth) 
+        self.current_user = User.create_with_omniauth(auth) 
         redirect_to root_url
         # redirect_to new_user_url, notice: "Please finish registering"
       end
