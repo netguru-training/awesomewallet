@@ -5,4 +5,6 @@ class Transaction
   field :name, type: String
   field :amount, type: BigDecimal
   field :kind, type: String
+
+  belongs_to :user
 end
