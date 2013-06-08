@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   field :name, type: String
   field :email, type: String
-  field :balance, type: Integer
+  field :balance, type: BigDecimal
   attr_accessible :name, :email
   has_many :identities
   validates_presence_of :name
