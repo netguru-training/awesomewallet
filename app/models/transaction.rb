@@ -10,6 +10,7 @@ class Transaction
 
   validates :amount, numericality: true
   validates :name, :kind, :amount, :user_id, :current_balance, presence: true
+  validates :kind, inclusion: { in: %w(income outcome) }
 
   belongs_to :user
 
