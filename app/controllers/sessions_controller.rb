@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
         # The identity is not associated with the current_user so lets 
         # associate the identity
         @identity.user = current_user
-        @identity.save()
+        @identity.save
         redirect_to root_url, notice: "Successfully linked that account!"
       end
     else
@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
         # redirect_to new_user_url, notice: "Please finish registering"
       end
     end
-end
+  end
 
   def destroy
     self.current_user = nil
@@ -52,5 +52,4 @@ end
   def failure
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
-
 end
