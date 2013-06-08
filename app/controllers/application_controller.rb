@@ -6,22 +6,17 @@ class ApplicationController < ActionController::Base
 
   private
     def current_user
-      begin
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
-      rescue Exception => e
-        nil
-      end
+      @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
     end
 
-    def user_signed_in?
-      return true if current_user
+    def signed_in?
+      !!current_user
     end
+    helper_method :current_user, :signed_in?
 
-    def correct_user?
-      @user = User.find(params[:id])
-      unless current_user == @user
-        redirect_to root_url, :alert => "Access denied."
-      end
+    def current_user=(user)
+      @current_user = user
+      session[:user_id] = user.nil? ? user : user.id
     end
 
     def authenticate_user!
