@@ -1,10 +1,10 @@
 = link_to "Awesomewallet", root_path, :class => 'brand'
-%ul.nav
+%ul.nav.pull-right
   - if signed_in?
     %li
-      Logged in as #{current_user.name}
+      %a{ href: "#" } Logged in as #{current_user.name}
     %li
       = link_to 'Logout', logout_path
   - else
     %li
-      = link_to 'Login', "#"
+      = link_to 'Login', "/auth/github"
