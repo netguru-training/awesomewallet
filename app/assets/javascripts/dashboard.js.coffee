@@ -24,8 +24,8 @@ $('chart').each ->
   axes = @getAttribute('axes')
   grid = @getAttribute('grid')
 
-  preUnits = @getAttributte('preUnits')
-  postUnits = @getAttributte('postUnits')
+  preUnits = @getAttribute('preUnits')
+  postUnits = @getAttribute('postUnits')
 
   plot   = document.createElement('div')
   plotId = "plot-#{plotIdCounter}"
