@@ -12,8 +12,8 @@ production:
     github_secret: '08dde0b58749a6fb08ea2fdbef898bb8595f5fac'
     google_id: ''
     google_secret: ''
-    facebook_id: ''
-    facebook_secret: ''
+    facebook_id: '659473207411610'
+    facebook_secret: '5c114f3bd58657dbc9cf2a2faf75243b'
     
 development:
   <<: *defaults
