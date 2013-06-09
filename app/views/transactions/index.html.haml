@@ -17,4 +17,6 @@
         %td= "+#{transaction.amount}"
       %td= transaction.created_at 
 
+= paginate transactions
+
 = link_to "Add transaction", new_transaction_path, class: "btn"
