@@ -4,6 +4,10 @@
     %li
       %a{ href: "#" } Logged in as #{current_user.name}
     %li
+      %a{ href: "#" }
+        Balance:
+        %span{class: "label label-important"}= current_user.balance
+    %li
       = link_to 'Logout', logout_path
   - else
     %a{:class => 'btn dropdown-toggle', "data-toggle" => 'dropdown', :href => '#'}
