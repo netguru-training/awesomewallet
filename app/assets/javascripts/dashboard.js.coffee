@@ -14,8 +14,17 @@ $('chart').each ->
   url  = @getAttribute('path')
   type = @getAttribute('type')
 
-  xkey  = @getAttribute('xkey')
-  ykeys = (@getAttribute('ykeys') || '').split(',')
+  xkey   = @getAttribute('xkey')
+  ykeys  = (@getAttribute('ykeys') || '').split(',')
+  labels = (@getAttribute('labels') || '').split(',')
+
+  fill = @getAttribute('fillOpacity')
+
+  axes = @getAttribute('axes')
+  grid = @getAttribute('grid')
+
+  preUnits = @getAttributte('preUnits')
+  postUnits = @getAttributte('postUnits')
 
   plot   = document.createElement('div')
   plotId = "plot-#{plotIdCounter}"
@@ -28,9 +37,14 @@ $('chart').each ->
   try
     plotter = plotFactory type
     plotterOptions = {
-      xkey: xkey
-      ykeys: ykeys
-      element: plotId
+      xkey:       xkey
+      ykeys:      ykeys
+      element:    plotId
+      fill:       fill
+      axes:       axes
+      grid:       grid
+      preUnits:   preUnits
+      postUnits:  postUnits
     }
 
     $.getJSON url, (data) ->
