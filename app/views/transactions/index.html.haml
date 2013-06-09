@@ -8,7 +8,7 @@
     %th Created at
 
   - transactions.each do |transaction|
-    %tr{class: transaction.kind_class}
+    %tr{class: kind_label(transaction)}
       %td= transaction.kind
       %td= transaction.name
       %td= signed_amount(transaction)

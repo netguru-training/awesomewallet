@@ -17,4 +17,20 @@ describe TransactionsHelper do
       signed_amount(subject).should == "-#{amount}"
     end
   end
+
+  describe 'kind_label' do
+    let(:transaction) { OpenStruct.new }
+
+    it 'return "success" if kind is income' do
+      transaction.kind = :income
+
+      kind_label(transaction).should == "success"
+    end
+
+    it 'return "error" if kind is outcome' do
+      transaction.kind = :outcome
+
+      kind_label(transaction).should == "error"
+    end
+  end
 end
