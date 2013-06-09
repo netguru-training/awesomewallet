@@ -17,14 +17,7 @@ class Transaction
 
   belongs_to :user
 
-  default_scope desc(:created_at) 
-
-  def kind_class
-    case kind
-    when :income then "success"
-    when :outcome then "error"
-    end
-  end
+  default_scope desc(:created_at)
 
   private
   def set_current_balance
