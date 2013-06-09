@@ -14,6 +14,10 @@
       %td= signed_amount(transaction)
       %td= transaction.created_at
 
+%span.label.label-success= "Total income: #{current_user.total_amount(:income)}"
+%br/
+%span.label.label-important= "Total outcome: #{current_user.total_amount(:outcome)}"
+
 = paginate transactions
 
 = link_to "Add transaction", new_transaction_path, class: "btn"
