@@ -5,6 +5,12 @@
 %span.label.label-success= "Total income: #{current_user.total_amount(:income)}"
 %span.label.label-important= "Total outcome: #{current_user.total_amount(:outcome)}"
 
+.pull-right
+  = simple_form_for :date, url: transactions_path, :method => 'get', html: { class: "form-inline" } do |f|
+    = f.text_field :from, class: 'datepicker', placeholder: "from"
+    = f.text_field :to, class: 'datepicker', placeholder: "to"
+    = f.submit "Search"
+
 %table.table.table-bordered
   %tr
     %th Kind
@@ -18,10 +24,5 @@
       %td= transaction.name
       %td= signed_amount(transaction)
       %td= transaction.created_at.strftime("%d %b %Y %H:%M")
- 
-= simple_form_for :date, url: transactions_path, :method => 'get' do |f|
-  = f.text_field :from, class: 'datepicker', placeholder: "from"
-  = f.text_field :to, class: 'datepicker', placeholder: "to"
-  = f.submit "Search"
 
 = paginate transactions
