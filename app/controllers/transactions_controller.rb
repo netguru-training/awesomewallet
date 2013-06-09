@@ -5,8 +5,11 @@ class TransactionsController < ApplicationController
   expose(:transaction)
 
   def index
-    @plot_data = if params[:date] && params[:date][:from] && params[:date][:to]
+    @per_day_data = if params[:date] && params[:date][:from] && params[:date][:to]
                    current_user.transactions_per_day(Date.parse(params[:date][:from]), Date.parse(params[:date][:to]))
+                 end
+    @balance_history_data = if params[:date] && params[:date][:from] && params[:date][:to]
+                   current_user.balance_history(Date.parse(params[:date][:from]), Date.parse(params[:date][:to]))
                  end
   end
 

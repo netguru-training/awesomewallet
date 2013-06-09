@@ -27,8 +27,17 @@
 
 = paginate transactions
 
-%chart{data: @plot_data.to_json,
-        xkey: 'date',
-        ykeys: 'number_of_transactions',
-        labels: 'test',
-        type: 'line'}
+-if @per_day_data
+  %h2 Transactions per day
+  %chart{data: @per_day_data.to_json,
+          xkey: 'date',
+          ykeys: 'number_of_transactions',
+          labels: 'test',
+          type: 'bar'}
+-if @balance_history_data
+  %h2 Balance history
+  %chart{data: @balance_history_data.to_json,
+          xkey: 'data',
+          ykeys: 'balance',
+          labels: 'test',
+          type: 'line'}
