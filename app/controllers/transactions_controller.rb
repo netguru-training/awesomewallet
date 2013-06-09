@@ -5,13 +5,19 @@ class TransactionsController < ApplicationController
   expose(:transaction)
 
   def create
-    render :edit and return unless transaction.save
-    redirect_to transactions_path, notice: "Transaction created!"
+    if transaction.save
+      redirect_to transactions_path, notice: "Transaction created!"
+    else
+      render :new
+    end
   end
 
   def update
-    render :edit and return unless transaction.save
-    redirect_to transactions_path, notice: "Transaction updated!"
+    if transaction.save
+      redirect_to transactions_path, notice: "Transaction updated!"
+    else
+      render :edit
+    end
   end
 
   def destroy
