@@ -15,6 +15,6 @@
       %span{:class => 'caret'}
     %ul.dropdown-menu
       %li
-        = link_to 'Github', "/auth/github"
-        = link_to 'Google', "/auth/google_oauth2"
-        = link_to 'Facebook', "/auth/facebook"
+        = link_to 'Github', auth_for("github")
+        = link_to 'Google', auth_for("google_oauth2")
+        = link_to 'Facebook', auth_for("facebook")
