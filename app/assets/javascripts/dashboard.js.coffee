@@ -46,7 +46,7 @@ $('chart').each ->
   if url
     $.getJSON url, (data) ->
       plotterOptions.data = data
-      plotter(plotterOptions)
   else
     plotterOptions.data = JSON.parse(data)
-    plotter(plotterOptions)
+
+  plotter(plotterOptions) if plotterOptions.data
