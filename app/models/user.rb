@@ -3,7 +3,7 @@ class User
 
   field :name, type: String
   field :email, type: String
-  field :balance, type: BigDecimal
+  field :balance, type: BigDecimal, default: 0
   index({ email: 1 }, { unique: true, background: true })
   # run 'rake db:mongoid:create_indexes' to create indexes
 
