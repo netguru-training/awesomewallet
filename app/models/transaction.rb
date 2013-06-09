@@ -19,6 +19,8 @@ class Transaction
   belongs_to :user
 
   default_scope desc(:created_at)
+  
+  scope :by_date_range, ->(from, to) { where(:created_at.gte => from).where(:created_at.lte => to) }
 
   private  
   def set_current_balance

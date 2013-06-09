@@ -29,12 +29,12 @@ class User
   end
 
   def transactions_per_day(from, to)
-    searched = transactions.where(:created_at.gte => from.beginning_of_day).where(:created_at.lte => to.end_of_day)
+    searched = transactions.by_date_range(from, to)
     searched.group_by{ |transaction| transaction.created_at.to_date }.collect{ |group| {date: group[0] , number_of_transactions: group[1].count} }
   end
 
   def balance_history(start_date, end_date)
-    data = transactions.where(:created_at.gte => start_date.to_date, :created_at.lte => end_date.to_date.end_of_day).
+    data = transactions.by_date_range(start_date, end_date).
       group_by{ |t| t.created_at.to_date }.map { |k, v| { data: k, balance: v.first.current_balance } }
   end
 end
