@@ -1,4 +1,4 @@
-= link_to "AwesomeWallet", transactions_path, :class => 'brand'
+= link_to "AwesomeWallet", transactions_path, class: 'brand'
 %ul.nav.pull-right
   - if signed_in?
     %li
@@ -10,9 +10,9 @@
     %li
       = link_to 'Logout', logout_path
   - else
-    %a{:class => 'btn dropdown-toggle', "data-toggle" => 'dropdown', :href => '#'}
+    %a.btn.dropdown-toggle{data: {toggle: 'dropdown'}, href: '#'}
       Login
-      %span{:class => 'caret'}
+      %span.caret
     %ul.dropdown-menu
       %li
         = link_to 'Github', auth_for("github")

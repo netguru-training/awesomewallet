@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
         self.current_user = @identity.user
         redirect_to transactions_path, notice: "Signed in!"
       else
-        self.current_user = User.create_with_omniauth(auth) 
+        self.current_user = User.create_with_omniauth(auth)
         redirect_to transactions_path
       end
     end
@@ -36,6 +36,6 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
+    redirect_to root_url, alert: "Authentication error: #{params[:message].humanize}"
   end
 end
