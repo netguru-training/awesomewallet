@@ -13,6 +13,7 @@ plotFactory = (typeName) ->
 $('chart').each ->
   url  = @getAttribute('path')
   type = @getAttribute('type')
+  data = @getAttribute('data')
 
   xkey   = @getAttribute('xkey')
   ykeys  = (@getAttribute('ykeys') || '').split(',')
@@ -47,8 +48,13 @@ $('chart').each ->
       postUnits:  postUnits
     }
 
-    $.getJSON url, (data) ->
+    if url
+      $.getJSON url, (data) ->
+        plotterOptions.data = data
+        plotter(plotterOptions)
+    else
       plotterOptions.data = data
-      plotter(data)
+      plotter(plotterOptions)
+
   catch err
     console.err(err)
