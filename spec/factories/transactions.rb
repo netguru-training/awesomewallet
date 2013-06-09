@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :transaction do
     user_id 1
     name "MyString"
-    amount 1
-    kind "MyString"
+    amount { rand(1..100_000) }
+    kind { %i(income outcome).sample }
   end
 end
