@@ -27,4 +27,9 @@ class User
   def total_amount(kind)
     transactions.where(kind: kind).sum(:amount).to_f
   end
+
+  def transactions_per_day(from, to)
+    searched = transactions.where(:created_at.gte => from.beginning_of_day).where(:created_at.lte => to.end_of_day)
+    searched.group_by{ |transaction| transaction.created_at.to_date }.collect{ |group| {date: group[0] , number_of_transactions: group[1].count} }
+  end
 end

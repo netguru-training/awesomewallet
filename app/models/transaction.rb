@@ -20,7 +20,7 @@ class Transaction
 
   default_scope desc(:created_at)
 
-  private
+  private  
   def set_current_balance
     self.current_balance = user.balance
   end
