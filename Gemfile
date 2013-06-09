@@ -29,3 +29,5 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem "decent_exposure"
 gem 'pry-rails'
 gem 'simple_form'
+gem 'kaminari'
+gem 'kaminari-bootstrap'

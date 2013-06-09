@@ -5,16 +5,15 @@
     %th Kind
     %th Name
     %th Amount
-    %th Created at 
-    
+    %th Created at
+
   - transactions.each do |transaction|
     %tr{class: transaction.kind_class}
       %td= transaction.kind
-      %td= transaction.name 
-      - if transaction.kind == "outcome"
-        %td= "-#{transaction.amount}"
-      - else
-        %td= "+#{transaction.amount}"
-      %td= transaction.created_at 
+      %td= transaction.name
+      %td= signed_amount(transaction)
+      %td= transaction.created_at
+
+= paginate transactions
 
 = link_to "Add transaction", new_transaction_path, class: "btn"

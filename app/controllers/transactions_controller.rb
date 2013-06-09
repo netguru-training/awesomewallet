@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   authenticate_user!
 
-  expose(:transactions) { current_user.transactions }
+  expose(:transactions) { current_user.transactions.page(params[:page]) }
   expose(:transaction)
 
   def create

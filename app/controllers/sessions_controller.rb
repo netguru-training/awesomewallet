@@ -21,24 +21,24 @@ class SessionsController < ApplicationController
         # account. But we found the identity and the user associated with it 
         # is the current user. So the identity is already associated with 
         # this user. So let's display an error message.
-        redirect_to root_url, notice: "Already linked that account!"
+        redirect_to transactions_path, notice: "Already linked that account!"
       else
         # The identity is not associated with the current_user so lets 
         # associate the identity
         @identity.user = current_user
         @identity.save
-        redirect_to root_url, notice: "Successfully linked that account!"
+        redirect_to transactions_path, notice: "Successfully linked that account!"
       end
     else
       if @identity.user.present?
         # The identity we found had a user associated with it so let's 
         # just log them in here
         self.current_user = @identity.user
-        redirect_to root_url, notice: "Signed in!"
+        redirect_to transactions_path, notice: "Signed in!"
       else
         # No user associated with the identity so we need to create a new one
         self.current_user = User.create_with_omniauth(auth) 
-        redirect_to root_url
+        redirect_to transactions_path
         # redirect_to new_user_url, notice: "Please finish registering"
       end
     end
