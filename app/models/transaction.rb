@@ -1,6 +1,7 @@
 class Transaction
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::MultiParameterAttributes
 
   before_create :set_user_balance
   before_create :set_current_balance
