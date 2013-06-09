@@ -96,6 +96,7 @@ GEM
     kaminari-bootstrap (0.1.3)
       kaminari (>= 0.13.0)
       rails
+    konf (0.0.2)
     launchy (2.3.0)
       addressable (~> 2.3)
     mail (2.5.4)
@@ -230,6 +231,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   kaminari-bootstrap
+  konf
   mongoid (>= 3.1.2)
   mongoid-rspec (>= 1.7.0)
   omniauth (>= 1.1.3)
