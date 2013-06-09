@@ -1,16 +1,20 @@
-= link_to "AwesomeWallet", root_path, :class => 'brand'
+= link_to "AwesomeWallet", transactions_path, class: 'brand'
 %ul.nav.pull-right
   - if signed_in?
     %li
       %a{ href: "#" } Logged in as #{current_user.name}
     %li
+      %a{ href: "#" }
+        Balance:
+        %span{class: "label label-#{balance_label(current_user.balance)}"}= current_user.balance
+    %li
       = link_to 'Logout', logout_path
   - else
-    %a{:class => 'btn dropdown-toggle', "data-toggle" => 'dropdown', :href => '#'}
+    %a.btn.dropdown-toggle{data: {toggle: 'dropdown'}, href: '#'}
       Login
-      %span{:class => 'caret'}
+      %span.caret
     %ul.dropdown-menu
       %li
-        = link_to 'Github', "/auth/github"
-        = link_to 'Google', "/auth/google_oauth2"
-        = link_to 'Facebook', "/auth/facebook"
+        = link_to 'Github', auth_for("github")
+        = link_to 'Google', auth_for("google_oauth2")
+        = link_to 'Facebook', auth_for("facebook")

@@ -11,7 +11,6 @@ plotFactory = (typeName) ->
     else throw 'Unknow plot type'
 
 $('chart').each ->
-  console.log('yep')
   url  = @getAttribute('path')
   type = @getAttribute('type')
 

@@ -1,4 +1,9 @@
-%h1 Transactions
+%h1 
+  Transactions
+  = link_to "Add transaction", new_transaction_path, class: "btn"
+
+%span.label.label-success= "Total income: #{current_user.total_amount(:income)}"
+%span.label.label-important= "Total outcome: #{current_user.total_amount(:outcome)}"
 
 %table.table.table-bordered
   %tr
@@ -8,7 +13,7 @@
     %th Created at
 
   - transactions.each do |transaction|
-    %tr{class: transaction.kind_class}
+    %tr{class: kind_label(transaction)}
       %td= transaction.kind
       %td= transaction.name
       %td= signed_amount(transaction)
@@ -20,5 +25,3 @@
   = f.submit "Search"
 
 = paginate transactions
-
-= link_to "Add transaction", new_transaction_path, class: "btn"

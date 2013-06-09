@@ -1,0 +1,14 @@
+defaults: &defaults
+  auth_keys:
+    facebook_id: '587450764608725'
+    facebook_secret: '210bf438ba7749541f21401cbc70ab52'
+    github_id: '73a3698de16e3be8c6d0'
+    github_secret: 2a03ca8180e5655d48395304b15f8abe34b84d67
+    google_id: '1001644837540.apps.googleusercontent.com'
+    google_secret: 'Vhfdr24B3SJFFgKbt-3lmZCk'
+production:
+  <<: *defaults
+development:
+  <<: *defaults
+test: 
+  <<: *defaults
