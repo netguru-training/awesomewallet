@@ -4,6 +4,12 @@ class TransactionsController < ApplicationController
   expose(:transactions) { searched_transactions.page(params[:page]) }
   expose(:transaction)
 
+  def index
+    @plot_data = if params[:date] && params[:date][:from] && params[:date][:to]
+                   current_user.transactions_per_day(Date.parse(params[:date][:from]), Date.parse(params[:date][:to]))
+                 end
+  end
+
   def create
     if transaction.save
       redirect_to transactions_path, notice: "Transaction created!"
@@ -26,23 +32,17 @@ class TransactionsController < ApplicationController
   end
 
   def chart_counts
-        
+
   end
 
   def chart_balance
-    
+
   end
 
   def get_transactions
-    if params[:data].present? && params[:data][:from].present? && params[:data][:to].present?
-      current_user.transactions_per_day(params[:data][:from], params[:data][:from])
-    end
   end
 
-  helper_method :get_transactions
-
-private
-
+  private
   def searched_transactions
     search = current_user.transactions
     if params[:date]

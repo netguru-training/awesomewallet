@@ -1,12 +1,12 @@
-%h1 
+%h1
   Transactions
   = link_to "Add transaction", new_transaction_path, class: "btn"
 
-%span.label.label-success= "Total income: #{current_user.total_amount(:income)}"
-%span.label.label-important= "Total outcome: #{current_user.total_amount(:outcome)}"
+%span.label.label-success Total income: #{current_user.total_amount(:income)}
+%span.label.label-important Total outcome: #{current_user.total_amount(:outcome)}
 
 .pull-right
-  = simple_form_for :date, url: transactions_path, :method => 'get', html: { class: "form-inline" } do |f|
+  = simple_form_for :date, url: transactions_path, method: 'get', html: { class: "form-inline" } do |f|
     = f.text_field :from, class: 'datepicker', placeholder: "from"
     = f.text_field :to, class: 'datepicker', placeholder: "to"
     = f.submit "Search"
@@ -27,4 +27,8 @@
 
 = paginate transactions
 
-%chart{ data: get_transactions }
+%chart{data: @plot_data.to_json,
+        xkey: 'date',
+        ykeys: 'number_of_transactions',
+        labels: 'test',
+        type: 'line'}

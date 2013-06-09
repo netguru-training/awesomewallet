@@ -35,26 +35,18 @@ $('chart').each ->
 
   @appendChild plot
 
-  try
-    plotter = plotFactory type
-    plotterOptions = {
-      xkey:       xkey
-      ykeys:      ykeys
-      element:    plotId
-      fill:       fill
-      axes:       axes
-      grid:       grid
-      preUnits:   preUnits
-      postUnits:  postUnits
-    }
+  plotter = plotFactory type
+  plotterOptions = {
+    element:  plotId
+    xkey:     xkey if xkey
+    ykeys:    ykeys if ykeys
+    labels:   labels if labels
+  }
 
-    if url
-      $.getJSON url, (data) ->
-        plotterOptions.data = data
-        plotter(plotterOptions)
-    else
+  if url
+    $.getJSON url, (data) ->
       plotterOptions.data = data
       plotter(plotterOptions)
-
-  catch err
-    console.err(err)
+  else
+    plotterOptions.data = JSON.parse(data)
+    plotter(plotterOptions)
