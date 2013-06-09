@@ -14,8 +14,9 @@ $('chart').each ->
   url  = @getAttribute('path')
   type = @getAttribute('type')
 
-  xkey  = @getAttribute('xkey')
-  ykeys = (@getAttribute('ykeys') || '').split(',')
+  xkey   = @getAttribute('xkey')
+  ykeys  = (@getAttribute('ykeys') || '').split(',')
+  labels = (@getAttribute('labels') || '').split(',')
 
   plot   = document.createElement('div')
   plotId = "plot-#{plotIdCounter}"
