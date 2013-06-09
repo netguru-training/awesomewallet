@@ -5,7 +5,6 @@ class User
   field :email, type: String
   field :balance, type: BigDecimal, default: 0
   index({ email: 1 }, { unique: true, background: true })
-  # run 'rake db:mongoid:create_indexes' to create indexes
 
   has_many :identities
   has_many :transactions
@@ -26,6 +25,6 @@ class User
   end
 
   def total_amount(kind)
-    transactions.where(kind: kind).sum(:amount)
+    transactions.where(kind: kind).map(&:amount).sum(:amount).to_f
   end
 end
