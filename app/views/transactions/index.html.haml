@@ -26,3 +26,5 @@
       %td= transaction.created_at.strftime("%d %b %Y %H:%M")
 
 = paginate transactions
+
+%chart{ data: get_transactions }

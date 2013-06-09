@@ -25,6 +25,22 @@ class TransactionsController < ApplicationController
     redirect_to transactions_path, notice: "Transaction destroyed!"
   end
 
+  def chart_counts
+        
+  end
+
+  def chart_balance
+    
+  end
+
+  def get_transactions
+    if params[:data].present? && params[:data][:from].present? && params[:data][:to].present?
+      current_user.transactions_per_day(params[:data][:from], params[:data][:from])
+    end
+  end
+
+  helper_method :get_transactions
+
 private
 
   def searched_transactions
@@ -33,7 +49,6 @@ private
       search = search.where(:created_at.gte => Date.parse(params[:date][:from]).beginning_of_day) if params[:date][:from].present?
       search = search.where(:created_at.lte => Date.parse(params[:date][:to]).end_of_day) if params[:date][:to].present?
     end
-    #binding.pry
     search
   end
 

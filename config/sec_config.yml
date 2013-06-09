@@ -10,8 +10,8 @@ production:
   auth_keys: 
     github_id: 'fe21a88d2a8468781dda'
     github_secret: '08dde0b58749a6fb08ea2fdbef898bb8595f5fac'
-    google_id: ''
-    google_secret: ''
+    google_id: '180352516535.apps.googleusercontent.com'
+    google_secret: 'KJZ5wnduzXh9aMP3z7Zo4w3Q'
     facebook_id: '659473207411610'
     facebook_secret: '5c114f3bd58657dbc9cf2a2faf75243b'
     
