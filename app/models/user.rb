@@ -25,6 +25,6 @@ class User
   end
 
   def total_amount(kind)
-    transactions.where(kind: kind).map(&:amount).sum(:amount).to_f
+    transactions.where(kind: kind).sum(:amount).to_f
   end
 end
