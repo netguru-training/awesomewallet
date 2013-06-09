@@ -6,7 +6,7 @@
     %li
       %a{ href: "#" }
         Balance:
-        %span{class: "label label-important"}= current_user.balance
+        %span{class: "label label-#{balance_label(current_user.balance)}"}= current_user.balance
     %li
       = link_to 'Logout', logout_path
   - else
